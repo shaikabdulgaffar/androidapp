@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Padded vector: viewport 240, actual logo 160 (offset 40,40) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="240"
+    android:viewportHeight="240">
+
+    <!-- Move inner logo 40px right/down so it sits centered with padding -->
+    <group
+        android:translateX="40"
+        android:translateY="40">
+
+        <!-- Outer green ring -->
+        <path
+            android:fillColor="#2E7D32"
+            android:pathData="M80,0A80,80 0 1,0 160,80A80,80 0 0,0 80,0ZM80,14A66,66 0 1,1 14,80A66,66 0 0,1 80,14Z"/>
+
+        <!-- Inner white disc -->
+        <path
+            android:fillColor="#FFFFFFFF"
+            android:pathData="M80,24A56,56 0 1,1 24,80A56,56 0 0,1 80,24Z"/>
+    </group>
+</vector>

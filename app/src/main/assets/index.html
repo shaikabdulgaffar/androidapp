@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="HandheldFriendly" content="true">
+    <title>Hundred Sunnats</title>
+
+    <!-- App Styles (local) -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome CDN (needs internet; OPTIONAL) -->
+    <!-- If you want fully offline icons later, download needed SVGs locally -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          rel="stylesheet">
+</head>
+<body>
+
+<!-- Top Bar -->
+<header class="top-bar">
+    <button class="hamburger-btn" id="hamburgerBtn">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+    <h1 class="app-title" data-translate="appTitle">Hundred Sunnats</h1>
+    <div class="progress-indicator">
+        <span id="progressCount">0/100</span>
+    </div>
+</header>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="header-top">
+            <h3 data-translate="menu">Menu</h3>
+            <button class="close-btn" id="closeSidebar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="header-center">
+            <div class="app-logo">
+                <i class="fa-solid fa-mosque"></i>
+            </div>
+            <p class="header-subtitle" data-translate="followSunnah">
+                Follow the blessed way of Prophet Muhammad (ﷺ)
+            </p>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+        <!-- Progress -->
+        <div class="nav-item progress-section">
+            <div class="progress-info">
+                <i class="fa-solid fa-list-check"></i>
+                <span data-translate="yourProgress">Your Progress</span>
+            </div>
+            <div class="progress-circle">
+                <svg viewBox="0 0 50 50">
+                    <circle class="bg-circle" cx="25" cy="25" r="20"></circle>
+                    <circle class="progress-ring" cx="25" cy="25" r="20"
+                            stroke-dasharray="0 125.6" id="progressRing"></circle>
+                </svg>
+                <span class="progress-text" id="progressText">0%</span>
+            </div>
+        </div>
+
+        <!-- Theme -->
+        <div class="nav-item theme-toggle">
+            <div class="theme-info">
+                <i class="fa-solid fa-moon"></i>
+                <span data-translate="darkMode">Dark Mode</span>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <a href="#" class="nav-item" id="languageBtn">
+            <i class="fa-solid fa-language"></i>
+            <span data-translate="changeLanguage">Change Language</span>
+        </a>
+
+        <a href="#" class="nav-item" id="aboutAppBtn">
+            <i class="fa-solid fa-circle-info"></i>
+            <span data-translate="aboutApp">About This App</span>
+        </a>
+
+        <a href="#" class="nav-item" id="rateAppBtn">
+            <i class="fa-solid fa-star"></i>
+            <span data-translate="rateApp">Rate This App</span>
+        </a>
+
+        <a href="#" class="nav-item" id="shareAppBtn">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span data-translate="shareApp">Share This App</span>
+        </a>
+
+        <a href="#" class="nav-item" id="aboutUsBtn">
+            <i class="fa-solid fa-users"></i>
+            <span data-translate="aboutUs">About Us</span>
+        </a>
+    </nav>
+</aside>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Main Content -->
+<main class="main-content" id="mainContent">
+    <div class="container">
+        <div class="welcome-section">
+            <h2 data-translate="welcomeTitle">Welcome to Hundred Sunnats</h2>
+            <p data-translate="welcomeDesc">
+                Follow the beautiful Sunnats of Prophet Muhammad (ﷺ) in your daily life. Track your
+                progress as you implement these blessed practices.
+            </p>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories" id="categoriesContainer">
+            <div class="category-card" data-category="eating">
+                <div class="category-icon"><i class="fa-solid fa-utensils"></i></div>
+                <h3 data-translate="eatingCategory">Sunnahs of Eating</h3>
+                <p class="category-count">21 Sunnats</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-category="eating"></div>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="drinking">
+                <div class="category-icon"><i class="fa-solid fa-martini-glass"></i></div>
+                <h3 data-translate="drinkingCategory">Sunnahs of Drinking</h3>
+                <p class="category-count">6 Sunnats</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-category="drinking"></div>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="sleeping">
+                <div class="category-icon"><i class="fa-solid fa-bed"></i></div>
+                <h3 data-translate="sleepingCategory">Sunnahs of Sleeping</h3>
+                <p class="category-count">19 Sunnats</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-category="sleeping"></div>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="awakening">
+                <div class="category-icon"><i class="fa-solid fa-sun"></i></div>
+                <h3 data-translate="awakeningCategory">Sunnahs on Awakening</h3>
+                <p class="category-count">4 Sunnats</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-category="awakening"></div>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="clothing">
+                <div class="category-icon"><i class="fa-solid fa-shirt"></i></div>
+                <h3 data-translate="clothingCategory">Sunnahs when Wearing Clothes</h3>
+                <p class="category-count">7 Sunnats</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-category="clothing"></div>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="toilet">
+                <div class="category-icon"><i class="fa-solid fa-restroom"></i></div>
+                <h3 data-translate="toiletCategory">Sunnahs of the Toilet</h3>
+                <p class="category-count">11 Sunnats</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-category="toilet"></div>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="home">
+                <div class="category-icon"><i class="fa-solid fa-home"></i></div>
+                <h3 data-translate="homeCategory">Sunnahs of the Home</h3>
+                <p class="category-count">3 Sunnats</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-category="home"></div>
+                </div>
+            </div>
+
+            <div class="category-card" data-category="miscellaneous">
+                <div class="category-icon"><i class="fa-solid fa-heart"></i></div>
+                <h3 data-translate="miscellaneousCategory">Miscellaneous Sunnahs</h3>
+                <p class="category-count">29 Sunnats</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" data-category="miscellaneous"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Category Detail View -->
+<section class="category-detail" id="categoryDetail" style="display:none;">
+    <div class="detail-header">
+        <button class="back-btn" id="backBtn">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h2 id="categoryTitle"></h2>
+    </div>
+    <div class="sunnats-list" id="sunnatsList"></div>
+</section>
+
+<!-- Modals -->
+<div class="modal" id="languageModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 data-translate="selectLanguage">Select Language</h3>
+            <button class="close-modal" data-modal="languageModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="language-options">
+                <button class="language-btn active" data-lang="en">
+                    <i class="fa-solid fa-flag"></i> English
+                </button>
+                <button class="language-btn" data-lang="ur">
+                    <i class="fa-solid fa-flag"></i> اردو (Urdu)
+                </button>
+                <button class="language-btn" data-lang="ar">
+                    <i class="fa-solid fa-flag"></i> العربية (Arabic)
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="aboutAppModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 data-translate="aboutApp">About This App</h3>
+            <button class="close-modal" data-modal="aboutAppModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p data-translate="aboutAppDesc">
+                Hundred Sunnats is a comprehensive app designed to help Muslims follow the beautiful
+                Sunnah of Prophet Muhammad (ﷺ). Track your daily progress and implement these blessed
+                practices in your life.
+            </p>
+            <div class="app-info">
+                <p><strong data-translate="version">Version:</strong> 1.0.0</p>
+                <p><strong data-translate="developer">Developer:</strong> Islamic Apps</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="aboutUsModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 data-translate="aboutUs">About Us</h3>
+            <button class="close-modal" data-modal="aboutUsModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p data-translate="aboutUsDesc">
+                We are dedicated to creating Islamic applications that help Muslims worldwide
+                practice their faith with ease and convenience. Our mission is to make Islamic
+                knowledge accessible to everyone.
+            </p>
+            <div class="contact-info">
+                <p><i class="fa-solid fa-envelope"></i> islamicapps@example.com</p>
+                <p><i class="fa-solid fa-globe"></i> www.islamicapps.com</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script -->
+<script src="script.js"></script>
+
+<!-- Inline: Share & quick safety (in case script.js fails to load) -->
+<script>
+    /**
+     * Fallback minimal share if script.js not yet executed.
+     * Will not override if script.js already attached listener.
+     */
+    (function() {
+        const btn = document.getElementById('shareAppBtn');
+        if (btn && !btn.dataset.bound) {
+            btn.dataset.bound = '1';
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const msg = "Check out the Hundred Sunnats app: https://play.google.com/store/apps/details?id=com.app.hundredsunnats";
+                if (window.Android && Android.shareText) {
+                    Android.shareText(msg);
+                } else if (navigator.share) {
+                    navigator.share({title: 'Hundred Sunnats', text: msg})
+                        .catch(()=>{});
+                } else {
+                    alert(msg);
+                }
+            });
+        }
+    })();
+</script>
+
+</body>
+</html>
